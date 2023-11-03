@@ -15,4 +15,4 @@ mysql -h mysql-dev.anjumdevops.online -uroot -pExpenseApp@1 < /app/schema/backen
 
 systemctl daemon-reload
 systemctl enable backend
-systemctl start backend
+systemctl restart backend
