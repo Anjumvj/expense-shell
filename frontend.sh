@@ -1,4 +1,4 @@
-echo-e "\e[36m Installing Nginx\e[om"
+echo-e "${color} Installing Nginx\e[om"
 dnf install nginx -y
 systemctl enable nginx
 systemctl start nginx
