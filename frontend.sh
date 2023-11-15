@@ -1,6 +1,7 @@
+
 echo -e "\e[36m Installing Nginx \e[om"
-dnf install nginx -y
-systemctl enable nginx
+dnf install nginx -y &>>/tmp/expense.log
+systemctl enable nginx &>>/tmp/expense.log
 
 echo -e "\e[34m Starting Nginx \e[om"
 systemctl start nginx
