@@ -30,7 +30,7 @@ echo $?
 
 
 echo -e "\e[36m Extract Application Content \e[om"
-cd /app
+cd /app &>>$log_file
 unzip /tmp/backend.zip &>>$log_file
 echo $?
 
