@@ -1,4 +1,6 @@
  log_file="/tmp/expense.log"
+
+
 echo -e "\e[36m Disable nodejs default version \e[om"
 dnf module disable nodejs -y &>>$log_file
 echo $?
@@ -19,7 +21,7 @@ echo -e "\e[36m Add Application User \e[om"
 useradd expense &>>$log_file
 echo $?
 
-echo -e "\e[36m Create Application directory \e[om"
+echo -e "\e[36m Create Directory \e[om"
 mkdir /app &>>$log_file
 echo $?
 
