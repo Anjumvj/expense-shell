@@ -1,19 +1,56 @@
-dnf module disable nodejs -y &>>/tmp/expense.log
-dnf module enable nodejs:18 -y &>>/tmp/expense.log
-dnf install nodejs -y &>>/tmp/expense.log
-cp backend.service /etc/systemd/system/backend.service &>>/tmp/expense.log
-useradd expense
-mkdir /app
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>/tmp/expense.log
+ log_file="/tmp/expense.log"
+echo -e "\e[36m Disable nodejs default version \e[om"
+dnf module disable nodejs -y &>>$log_file
+echo $?
+
+echo -e "\e[36m Enable nodejs 18 version  \e[om"
+dnf module enable nodejs:18 -y &>>$log_file
+echo $?
+
+echo -e "\e[36m Installing nodejs \e[om"
+dnf install nodejs -y&>>$log_file
+echo $?
+
+echo -e "\e[36m copy backend service file \e[om"
+cp backend.service /etc/systemd/system/backend.service &>>$log_file
+echo $?
+
+echo -e "\e[36m Add Application User \e[om"
+useradd expense &>>$log_file
+echo $?
+
+echo -e "\e[36m Create Application directory \e[om"
+mkdir /app &>>$log_file
+echo $?
+
+
+echo -e "\e[36m Download Application Content \e[om"
+curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file
+echo $?
+
+
+echo -e "\e[36m Extract Application Content \e[om"
 cd /app
-unzip /tmp/backend.zip &>>/tmp/expense.log
-cd /app
-npm install
-dnf install mysql -y &>>/tmp/expense.log
-mysql -h mysql-dev.anjumdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
-systemctl daemon-reload &>>/tmp/expense.log
-systemctl enable backend &>>/tmp/expense.log
-systemctl restart backend &>>/tmp/expense.log
+unzip /tmp/backend.zip &>>$log_file
+echo $?
+
+echo -e "\e[36m Download NodeJs Dependencies \e[om"
+npm install &>>$log_file
+echo $?
+
+echo -e "\e[36m Installing mysql client to Load schema \e[om"
+dnf install mysql -y &>>$log_file
+echo $?
+
+echo -e "\e[36m Load schema \e[om"
+mysql -h mysql-dev.anjumdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+echo $?
+
+echo -e "\e[36m Starting backend service \e[om"
+systemctl daemon-reload &>>/tmp/expense.log &>>$log_file
+systemctl enable backend &>>/tmp/expense.log &>>$log_file
+systemctl restart backend &>>/tmp/expense.log &>>$log_file
+echo $?
 
 
 
