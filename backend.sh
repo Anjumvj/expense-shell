@@ -44,7 +44,7 @@ else
 fi
 fi
 
-if [ !-d /app]; then
+if [ ! -d /app]; then
 echo -e "\e[36m Create Application Directory \e[om"
 mkdir /app &>>$log_file
 if [ $? -eq 0 ]; then
