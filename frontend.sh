@@ -2,7 +2,12 @@
 echo -e "\e[36m Installing Nginx \e[om"
 dnf install nginx -y &>>/tmp/expense.log
 systemctl enable nginx &>>/tmp/expense.log
-echo $?
+if [ $? -eq 0 ]; then
+  echo -e "\e[36m SUCCESS \e[om"
+else
+  echo -e "\e[36m FAILURE \e[om"
+  fi
+
 
 echo -e "\e[36m Starting Nginx \e[om"
 systemctl start nginx &>>/tmp/expense.log
