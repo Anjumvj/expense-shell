@@ -1,6 +1,5 @@
  log_file="/tmp/expense.log"
 
-
 echo -e "\e[36m Disable nodejs default version \e[om"
 dnf module disable nodejs -y &>>$log_file
 if[ $? -eq 0 ]; then
