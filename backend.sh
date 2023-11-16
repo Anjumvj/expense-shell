@@ -41,7 +41,7 @@ else
   echo -e "\e[36m FAILURE \e[om"
 fi
 
-if[ ! -d /app]; then
+if [ ! -d /app]; then
 echo -e "\e[36m Create Directory \e[om"
 mkdir /app &>>$log_file
 if [ $? -eq 0 ]; then
