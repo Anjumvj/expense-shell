@@ -42,6 +42,7 @@ if [ $? -eq 0 ]; then
 else
   echo -e "\e[36m FAILURE \e[om"
 fi
+fi
 
 if [ !-d /app]; then
 echo -e "\e[36m Create Application Directory \e[om"
@@ -50,6 +51,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[36m SUCCESS \e[om"
 else
   echo -e "\e[36m FAILURE \e[om"
+  fi
   fi
 
 echo -e "\e[36m Delete Old Application Content \e[om"
