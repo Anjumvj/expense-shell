@@ -6,7 +6,6 @@ if [  -z "$1" ]; then
 
   MYSQL_ROOT_PASSWORD=$1
 
-fi
 echo -e "\e[36m Disable nodejs default version \e[om"
 dnf module disable nodejs -y &>>$log_file
 if [ $? -eq 0 ]; then
