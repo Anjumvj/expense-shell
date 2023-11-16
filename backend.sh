@@ -1,5 +1,12 @@
  log_file="/tmp/expense.log"
+if [  -z "$1" ]; then
+  echo Password Input Missing
+  exit
+  fi
 
+  MYSQL_ROOT_PASSWORD=$1
+
+fi
 echo -e "\e[36m Disable nodejs default version \e[om"
 dnf module disable nodejs -y &>>$log_file
 if [ $? -eq 0 ]; then
@@ -96,7 +103,7 @@ else
 fi
 
 echo -e "\e[36m Load schema \e[om"
-mysql -h mysql-dev.anjumdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql -h mysql-dev.anjumdevops.online -uroot -p${MYSQL_ROOT_PASSWORD}< /app/schema/backend.sql &>>$log_file
 if [ $? -eq 0 ]; then
   echo -e "\e[36m SUCCESS \e[om"
 else
