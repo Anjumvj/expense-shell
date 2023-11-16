@@ -22,10 +22,9 @@ echo $?
 
 echo -e "\e[36m Extract downloaded Application content code \e[om"
 cd /usr/share/nginx/html &>>/tmp/expense.log
-echo $?
-
 unzip /tmp/frontend.zip &>>/tmp/expense.log
 echo $?
 
+echo -e "\e[36m Starting Nginx \e[om"
 systemctl restart nginx &>>/tmp/expense.log
 echo $?
