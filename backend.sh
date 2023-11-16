@@ -44,7 +44,7 @@ else
 fi
 fi
 
-if [ ! -d /app]; then
+if [ ! -d /app ]; then
 echo -e "\e[36m Create Application Directory \e[om"
 mkdir /app &>>$log_file
 if [ $? -eq 0 ]; then
@@ -52,7 +52,7 @@ if [ $? -eq 0 ]; then
 else
   echo -e "\e[36m FAILURE \e[om"
   fi
-  fi
+fi
 
 echo -e "\e[36m Delete Old Application Content \e[om"
 rm -rf /app/* &>>$log_file
